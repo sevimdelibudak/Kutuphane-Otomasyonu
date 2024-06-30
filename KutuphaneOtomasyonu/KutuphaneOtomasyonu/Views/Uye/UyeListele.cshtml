@@ -1,0 +1,77 @@
+﻿@model IEnumerable<KutuphaneOtomasyonu.Models.UyeViewModel>
+
+@{
+    ViewData["Title"] = "Üye Listesi";
+}
+<style>
+    .btn-primary {
+        color: white;
+        background-color: chocolate !important;
+        border-color: chocolate;
+       
+    }
+</style>
+<h1>Üye Listesi</h1>
+<hr />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Üye Ekle</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SiraNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KimlikNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdSoyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TurIsmi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiraNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KimlikNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdSoyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TurIsmi)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "Edit", new { KimlikNo = item.KimlikNo }, new { @class = "btn btn-success" }) |
+                    @*@Html.ActionLink("Sil", "Delete", new { KimlikNo = item.KimlikNo }, new { @class = "btn btn-danger" } )|*@
+                    <button type="button" data-kimlik="@item.KimlikNo" class="btn btn-danger btnDelete" >Sil</button> |
+
+                    @Html.ActionLink("Ödünç Aldıklarım", "Details", new { KimlikNo = item.KimlikNo }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{ 
+
+    <script type="text/javascript">
+        $(".btnDelete").on('click', function () {
+            var kimlikNo = $(this).data('kimlik');
+            if (confirm(kimlikNo + " kimlik numaralı üye silinecek. Onaylıyor musunuz?")) {
+                window.location = "/Uye/Delete/?KimlikNo=" + kimlikNo;
+            }
+            return false;
+        })
+    </script>
+}
+
+

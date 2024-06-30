@@ -1,0 +1,111 @@
+﻿@model IEnumerable<KutuphaneOtomasyonu.Models.OduncViewModel>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+    @*<style>
+        /* table {
+                border-collapse: collapse;
+                width: 60%;
+            }
+
+            th {
+                height: 30px;*/
+        table {
+            border: 5px solid DimGray;
+            border-collapse: collapse;
+            width: 60% !important;
+        }
+
+            table th {
+                border: 3px solid DimGray;
+                background-color: gainsboro !important;
+                height: 30px;
+            }
+
+            table td {
+                border: 3px solid DimGray;
+                background-color: gainsboro;
+                height: 30px;
+            }
+    </style>*@
+
+<h1>Detaylar</h1>
+
+
+<h4>Ödunc</h4>
+@*<hr />
+            <div>
+        @foreach (var item in Model)
+        {
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SiraNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.SiraNo)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AdSoyad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.AdSoyad)
+        </dd>
+
+    </dl>
+        }
+    </div>
+    <div>
+        @Html.ActionLink("Details", "Details", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="OduncVievModel">Back to List</a>
+    </div>*@
+<table class="table table-dark table-striped">
+
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SiraNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.SiraNo
+                </td>
+                <td>
+                    @item.Tur
+                </td>
+                <td>
+                    @item.ISBN
+                </td>
+                <td>
+                    @item.Baslik
+                </td>
+                |
+                <td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+

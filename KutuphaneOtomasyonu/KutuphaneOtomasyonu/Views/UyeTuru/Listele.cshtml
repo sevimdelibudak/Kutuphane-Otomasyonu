@@ -1,0 +1,64 @@
+﻿@model IEnumerable<KutuphaneOtomasyonu.Models.UyeTuru>
+
+@{
+    ViewData["Title"] = "Üye Türü";
+}
+
+
+<p>
+    <a asp-action="Create">Yeni Oluştur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TurIsmı)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TurIsmı)
+                </td>
+                <td>
+                    <center>
+                        
+                        @Html.ActionLink("Düzenle", "Edit", new { ID = item.ID }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Sil", "Delete", new { ID = item.ID }, new { @class = "btn btn-danger" })
+                    </center>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<head>
+    <style>
+        table {
+            border: 5px solid DimGray;
+            border-collapse: collapse;
+        }
+
+            table th {
+                border: 4px solid DimGray;
+                background-color: gainsboro;
+            }
+
+            table td {
+                border: 4px solid DimGray;
+                background-color: gainsboro;
+            }
+    </style>
+
+</head>
+

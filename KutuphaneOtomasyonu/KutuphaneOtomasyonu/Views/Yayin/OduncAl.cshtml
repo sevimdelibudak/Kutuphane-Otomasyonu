@@ -1,0 +1,40 @@
+﻿@model KutuphaneOtomasyonu.Models.Odunc
+
+@{
+    ViewData["Title"] = "OduncAl";
+}
+
+<h1>OduncAl</h1>
+
+<h4>Odunc</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="OduncAl">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @Html.DropDownList("KimlikNo", (List<SelectListItem>)ViewBag.UyeListesi, "Üye Seçiniz", new { @class = "form-control mt-3", })
+            </div>           
+            <div class="form-group">
+                <label asp-for="ISBN" class="control-label"></label>
+                <input asp-for="ISBN" class="form-control" value="@ViewBag.ISBN" readonly/>
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Başlık</label>
+                <input  class="form-control" value="@ViewBag.YayinAdi" readonly/>
+            </div>          
+            <div class="form-group">
+                <input type="submit" value="Ödünç Al" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
